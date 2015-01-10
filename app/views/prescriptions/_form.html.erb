@@ -1,0 +1,31 @@
+<%= form_for @prescription, :html => { :class => "form-horizontal prescription" } do |f| %>
+
+    <% if @prescription.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@prescription.errors.count, "error") %> prohibited this prescription from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @prescription.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%= error_span(@prescription[:title]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            prescriptions_path, :class => 'btn btn-default' %>
+
+<% end %>
