@@ -10,11 +10,16 @@
   <% @prescription.items.each do |item| %>
   <dt><strong>Name</strong></dt>
   <dd><%= item.name %></dd>
+  
   <dt><strong>Instructions</strong></dt>
   <dd><%= item.instructions %></dd>
-
+  <hr>
   <% end %>
 </dl>
+<input type="button" value="Print Prescription" class="btn btn-success no-print" onClick="window.print()">
+
+<div class="navbar">
+  
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               prescriptions_path, :class => 'btn btn-default'  %>
@@ -25,3 +30,4 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+</div>
