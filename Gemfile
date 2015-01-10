@@ -39,6 +39,8 @@ gem "nested_form"
 
 gem 'therubyracer'
 
+gem 'devise', git: 'git@github.com:plataformatec/devise.git'
+gem 'devise-bootstrap-views'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
