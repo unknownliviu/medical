@@ -6,6 +6,14 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @prescription.title %></dd>
+  <h2>Items:</h2>
+  <% @prescription.items.each do |item| %>
+  <dt><strong>Name</strong></dt>
+  <dd><%= item.name %></dd>
+  <dt><strong>Instructions</strong></dt>
+  <dd><%= item.instructions %></dd>
+
+  <% end %>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
