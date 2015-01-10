@@ -1,4 +1,4 @@
-<%= form_for @prescription, :html => { :class => "form-horizontal prescription" } do |f| %>
+<%= nested_form_for @prescription, :html => { :class => "form-horizontal prescription" } do |f| %>
 
     <% if @prescription.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -22,7 +22,22 @@
     </div>
     <%= error_span(@prescription[:title]) %>
   </div>
-
+  <hr>
+  <%= f.fields_for :items do |item_form| %>
+    <h2>Item:</h2>
+    <div class="control-group">
+      <%= item_form.label :name, class: 'control-label' %>
+      <div class="controls">
+        <%= item_form.text_field :name, class: 'form-control' %>
+      </div>
+      <%= item_form.label :instructions, class: 'control-label' %>
+      <div class="controls">
+        <%= item_form.text_area :instructions, class: 'form-control' %>
+      </div>
+      <%= item_form.link_to_remove 'Remove item' %>
+    </div>
+  <% end %>
+  <p><%= f.link_to_add "Add item", :items %></p>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

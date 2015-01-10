@@ -30,6 +30,7 @@ group :development do
   gem 'pry'
   gem 'spring'
 end
+gem "nested_form"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
